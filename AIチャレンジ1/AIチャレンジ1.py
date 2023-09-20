@@ -13,7 +13,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
 # JupyterNotebook上でグラフを表示する設定
-%matplotlib inline
 # DataFrameで全ての列を表示する設定
 pd.options.display.max_columns = None
 
@@ -38,11 +37,6 @@ for i in range(366):
         dataset.iloc[i,7] = 1
 dataset.head()
 
-# 数値にばらつきがあるので整える。
-from sklearn.preprocessing import MinMaxScaler
-sc = MinMaxScaler()
-dataset_std = sc.fit_transform(dataset)
-dataset_std.shape
 
 # 二値分類モデルを使って分析しやすくするため
 is_tenki1 = (dataset['tenki1']==0).astype(np.int64)
@@ -54,6 +48,13 @@ dataset.head()
 Y = np.array(dataset['is_tenki1'])
 X = np.array(dataset[['kion1','kion2','kion3','wind1','wind2','kiatsu','cloud']])
 print("Y=", Y.shape, ", X=", X.shape)
+
+
+# 数値にばらつきがあるので整える。
+from sklearn.preprocessing import MinMaxScaler
+sc = MinMaxScaler()
+X = sc.fit_transform(X)
+
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_state=0)
 X_train, X_valid, Y_train, Y_valid = train_test_split(X_train, Y_train, test_size=0.3, random_state=0)
@@ -77,14 +78,21 @@ model.compile(optimizer = "rmsprop", loss='binary_crossentropy', metrics=['accur
 
 model.summary()
 
-%%time
+
 # 学習の実施
-log = model.fit(X_train, Y_train, epochs=5000, batch_size=24, verbose=True,
+log = model.fit(X_train, Y_train, epochs=5000, batch_size=32, verbose=True,
                 callbacks=[keras.callbacks.EarlyStopping(monitor='val_loss',
                                                          min_delta=0, patience=100,
                                                          verbose=1)],
          validation_data=(X_valid, Y_valid))
 
+
+plt.plot(log.history['loss'], label='loss')
+plt.plot(log.history['val_loss'], label='val_loss')
+plt.legend(frameon=False) # 凡例の表示
+plt.xlabel("epochs")
+plt.ylabel("crossentropy")
+plt.show()
 
 # predictで予測を行う
 Y_pred = model.predict(X_test)
@@ -94,6 +102,11 @@ Y_pred = model.predict(X_test)
 Y_pred_cls = (Y_pred > 0.5).astype("int32")
 
 Y_pred_ = Y_pred_cls.reshape(-1)
+
+Y_pred
+
+Y_pred_
+
 from sklearn.metrics import classification_report
 
 print(classification_report(Y_test, Y_pred_))
