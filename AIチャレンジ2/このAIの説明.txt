@@ -1,7 +1,5 @@
-“Œ‹ž‚Ì“V‹Ci‰J‚ª~‚Á‚Ä‚¢‚é‚©‚Ç‚¤‚©j‚ð—\‘ª‚·‚éAI‚Å‚·B
+å››åŠæœŸãƒ™ãƒ¼ã‚¹ã§æ—¥æœ¬ã®GDPãŒä¸Šæ˜‡ã‚‚ã—ãã¯åŠ å·¥ã™ã‚‹ã‹ã‚’äºˆæ¸¬ã™ã‚‹AIã§ã™ã€‚
 
-ƒf[ƒ^‚ÍˆÈ‰º‚Ì‚Æ‚±‚ë‚©‚ç‚P”N•ª‚ðƒ_ƒEƒ“ƒ[ƒh
-https://www.data.jma.go.jp/gmd/risk/obsdl/index.php
+ãƒ‡ãƒ¼ã‚¿ã¯çµŒç”£çœã‹ã‚‰ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã€‚
 
-“V‹C‚É‚Â‚¢‚ÄA‚V‚Â‚Ìà–¾•Ï”‚ð—p‚¢‚Ä“ñ’l•ª—Þƒ‚ƒfƒ‹‚ÆKeras‚Å
-ŠwK‚³‚¹‚Ä‚¢‚Ü‚·B
+ï¼”ã¤ã®èª¬æ˜Žå¤‰æ•°ã‚’ç”¨ã„ã¦ç®—å‡º
